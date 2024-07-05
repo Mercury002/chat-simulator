@@ -22,9 +22,11 @@
 import moment from 'moment';
 import 'moment/locale/ru'
 import { onMounted, onUnmounted, ref, nextTick } from 'vue';
+import { useRouter  } from 'vue-router';
 import { sendMessage, getMessages } from '@/services/chatService';
 
 const msg = ref('')
+const router = useRouter()
 const messages = ref(getMessages())
 const currentUser = ref({})
 moment.locale('ru');
@@ -73,6 +75,7 @@ onMounted(() => {
 
     if (msgs) messages.value = JSON.parse(msgs)
     if (cUser) currentUser.value = JSON.parse(cUser);
+    else router.push('/users')
 
     window.addEventListener('storage', updateMessages);
 })

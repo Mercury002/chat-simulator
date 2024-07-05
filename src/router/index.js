@@ -6,14 +6,14 @@ const routes = [
     redirect: '/users'
   },
   {
-      path: '/users', 
-      name: 'users', 
-      component: () => import('@/views/Users.vue')
+    path: '/users', 
+    name: 'users', 
+    component: () => import('@/views/Users.vue')
   },
   {
-      path: '/chat', 
-      name: 'chat', 
-      component: () => import('@/views/Chat.vue')
+    path: '/chat', 
+    name: 'chat', 
+    component: () => import('@/views/Chat.vue')
   }
 ]
 
@@ -27,12 +27,12 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.path === '/chat' && localStorage.getItem('visitedChat')) {
-      next('/users')
-    } else {
-      next()
-    }
+    next('/users')
+  } else {
+    next()
+  }
 
-    document.title = 'Chat simulator';
+  document.title = 'Chat simulator';
   })
 
 export default router   
