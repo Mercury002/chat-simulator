@@ -5,11 +5,13 @@ const routes = [
     path: '/',
     redirect: '/users'
   },
+
   {
     path: '/users', 
     name: 'users', 
     component: () => import('@/views/Users.vue')
   },
+  
   {
     path: '/chat', 
     name: 'chat', 
